@@ -21,6 +21,12 @@ int main()
 	int number;
 	int item;
 	SortedList<int> list;
+	// list.PutItem(5);
+	// list.PutItem(1);
+	// list.PutItem(10);
+	// list.PutItem(3);
+	//
+	// list.DeleteItem(3);
 
 	bool found;
 
@@ -61,7 +67,7 @@ int main()
 		else if (command == "DeleteItem")
 		{
 			//inFile >> item;
-			cin >> item;
+			// cin >> item;
 			list.DeleteItem(item);
 			outFile << item;
 			outFile << " is deleted." << endl;

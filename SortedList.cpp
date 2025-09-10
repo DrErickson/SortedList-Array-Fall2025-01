@@ -25,18 +25,50 @@ int SortedList<T>::GetLength() const {
 
 template<class T>
 bool SortedList<T>::Contains(T someItem) {
-
+    for (int i = 0; i < length; i++) {
+        // Find the correct position
+        if (someItem == info[i]) {
+            return true;
+        }
+    }
     return false;
 }
 
 template<class T>
 void SortedList<T>::PutItem(T item) {
-
+    if (IsFull()) {
+        return;
+    }
+    // 1. Find where item goes
+    int i;
+    for (i = 0; i < length; i++) {
+        // Find the correct position
+        if (item <= info[i]) {
+            break;
+        }
+    }
+    // Slide over items
+    for (int j = length; j >= i + 1; j--) {
+        info[j] = info[j - 1];
+    }
+    // Insert item
+    info[i] = item;
+    ++length;
 }
 
 template<class T>
 void SortedList<T>::DeleteItem(T item) {
-
+    // Find the item
+    for (int i = 0; i < length; i++) {
+        // Find the correct position
+        if (item == info[i]) {
+            for (int j = i; j < length; j++) {
+                info[j] = info[j + 1];
+            }
+            --length;
+            return;
+        }
+    }
 }
 
 template<class T>
